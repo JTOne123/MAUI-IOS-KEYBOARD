@@ -1,5 +1,7 @@
-﻿using MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers;
+﻿using MAUI_IOS_KEYBOARD.Platforms.iOS.Handlers;
+using MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Compatibility.Hosting;
 
 namespace MAUI_IOS_KEYBOARD;
 
@@ -14,10 +16,13 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			}).ConfigureMauiHandlers((handlers) =>
+			})
+			.UseMauiCompatibility()
+			.ConfigureMauiHandlers((handlers) =>
             {
 				#if IOS
-					handlers.AddHandler(typeof(Page), typeof(KeyboardManagerRenderer));
+					handlers.AddHandler(typeof(MainPage), typeof(KeyboardManagerHandler));
+					//handlers.AddCompatibilityRenderer(typeof(MainPage), typeof(KeyboardManagerRenderer));
 				#endif
 			});
 
