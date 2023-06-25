@@ -7,13 +7,8 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Handlers
 {
     public class KeyboardManagerHandler : PageHandler
 	{
-        class MyPageViewController : PageViewController
+        class MyCustomView : Microsoft.Maui.Platform.ContentView
         {
-            public MyPageViewController(IView page, IMauiContext mauiContext)
-                : base(page, mauiContext)
-            {
-            }
-
             public override bool CanBecomeFirstResponder => true;
 
             public override void PressesBegan(NSSet<UIPress> presses, UIPressesEvent evt)
@@ -52,6 +47,19 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Handlers
                 var keyCode = key.KeyCode;
 
                 System.Diagnostics.Debug.WriteLine($"key up {keyCode} {key.Characters}");
+            }
+        }
+
+        class MyPageViewController : PageViewController
+        {
+            public MyPageViewController(IView page, IMauiContext mauiContext)
+                : base(page, mauiContext)
+            {
+            }
+
+            protected override UIView CreatePlatformView(IElement view)
+            {
+                return new MyCustomView();
             }
         }
 
