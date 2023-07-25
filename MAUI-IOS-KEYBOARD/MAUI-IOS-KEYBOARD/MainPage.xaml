@@ -10,6 +10,10 @@
             VerticalOptions="Center">
 
             <Label
+                Text="Press any key"
+                HorizontalOptions="Center" />
+            
+            <Label
                 Text="{Binding KeyboardInput}"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"

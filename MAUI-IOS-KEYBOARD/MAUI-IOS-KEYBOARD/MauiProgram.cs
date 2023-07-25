@@ -31,6 +31,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
+        builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<KeyboardManager>();
 
         return builder.Build();
