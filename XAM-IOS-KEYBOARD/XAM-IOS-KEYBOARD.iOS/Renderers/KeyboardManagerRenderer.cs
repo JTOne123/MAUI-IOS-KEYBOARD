@@ -1,8 +1,11 @@
-﻿using Foundation;
-using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Foundation;
 using UIKit;
+using XAM_IOS_KEYBOARD.iOS.Renderers;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
-namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
+[assembly: ExportRenderer(typeof(ContentPage), typeof(KeyboardManagerRenderer))]
+namespace XAM_IOS_KEYBOARD.iOS.Renderers
 {
     public class KeyboardManagerRenderer : PageRenderer
     {
@@ -24,7 +27,7 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
 
             var keyCode = key.KeyCode;
 
-            System.Diagnostics.Debug.WriteLine($"MAUI key down {keyCode} {key.Characters}");
+            System.Diagnostics.Debug.WriteLine($"XAM key down {keyCode} {key.Characters}");
         }
 
         public override void PressesEnded(NSSet<UIPress> presses, UIPressesEvent evt)
@@ -43,7 +46,7 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
 
             var keyCode = key.KeyCode;
 
-            System.Diagnostics.Debug.WriteLine($"MAUI key up {keyCode} {key.Characters}");
+            System.Diagnostics.Debug.WriteLine($"XAM key up {keyCode} {key.Characters}");
         }
     }
 }
