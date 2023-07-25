@@ -1,4 +1,5 @@
 ﻿using MAUI_IOS_KEYBOARD.Platforms.iOS.Handlers;
+using MAUI_IOS_KEYBOARD.Platforms.iOS.Managers;
 using MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
@@ -30,6 +31,8 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+        builder.Services.AddSingleton<KeyboardManager>();
+
+        return builder.Build();
 	}
 }

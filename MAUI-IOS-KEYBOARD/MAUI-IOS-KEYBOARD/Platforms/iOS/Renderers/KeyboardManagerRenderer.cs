@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using MAUI_IOS_KEYBOARD.Platforms.iOS.Managers;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using UIKit;
 
@@ -6,6 +7,13 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
 {
     public class KeyboardManagerRenderer : PageRenderer
     {
+        private readonly KeyboardManager keyboardManager;
+
+        public KeyboardManagerRenderer(KeyboardManager keyboardManager)
+        {
+            this.keyboardManager = keyboardManager;
+        }
+
         public override bool CanBecomeFirstResponder => true;
 
         public override void PressesBegan(NSSet<UIPress> presses, UIPressesEvent evt)
@@ -25,6 +33,8 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
             var keyCode = key.KeyCode;
 
             System.Diagnostics.Debug.WriteLine($"MAUI key down {keyCode} {key.Characters}");
+
+            keyboardManager.InvokeKeyboardEvent(key.Characters, KeyboardManager.KeyEventType.KeyDown);
         }
 
         public override void PressesEnded(NSSet<UIPress> presses, UIPressesEvent evt)
@@ -44,6 +54,8 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
             var keyCode = key.KeyCode;
 
             System.Diagnostics.Debug.WriteLine($"MAUI key up {keyCode} {key.Characters}");
+
+            keyboardManager.InvokeKeyboardEvent(key.Characters, KeyboardManager.KeyEventType.KeyUp);
         }
     }
 }
