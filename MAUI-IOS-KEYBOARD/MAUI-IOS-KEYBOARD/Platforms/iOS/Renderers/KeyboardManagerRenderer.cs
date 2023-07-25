@@ -9,9 +9,9 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Renderers
     {
         private readonly KeyboardManager keyboardManager;
 
-        public KeyboardManagerRenderer(KeyboardManager keyboardManager)
+        public KeyboardManagerRenderer()
         {
-            this.keyboardManager = keyboardManager;
+            this.keyboardManager = MauiProgram.Services.GetService(typeof(KeyboardManager)) as KeyboardManager;
         }
 
         public override bool CanBecomeFirstResponder => true;

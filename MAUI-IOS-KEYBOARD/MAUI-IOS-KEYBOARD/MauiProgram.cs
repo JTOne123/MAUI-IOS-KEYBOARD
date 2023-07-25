@@ -8,6 +8,8 @@ namespace MAUI_IOS_KEYBOARD;
 
 public static class MauiProgram
 {
+	public static IServiceProvider Services { get; private set; }
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -34,6 +36,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<KeyboardManager>();
 
-        return builder.Build();
+		var mauiApp = builder.Build();
+
+        Services = mauiApp.Services;
+
+        return mauiApp;
 	}
 }
