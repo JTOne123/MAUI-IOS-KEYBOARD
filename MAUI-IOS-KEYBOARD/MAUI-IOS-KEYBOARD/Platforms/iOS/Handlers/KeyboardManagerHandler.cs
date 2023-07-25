@@ -42,7 +42,7 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Handlers
 
                 var keyCode = key.KeyCode;
 
-                System.Diagnostics.Debug.WriteLine($"key down {keyCode} {key.Characters}");
+                System.Diagnostics.Debug.WriteLine($"MAUI key down {keyCode} {key.Characters}");
 
                 keyboardManager.InvokeKeyboardEvent(key.Characters, KeyboardManager.KeyEventType.KeyDown);
             }
@@ -63,7 +63,7 @@ namespace MAUI_IOS_KEYBOARD.Platforms.iOS.Handlers
 
                 var keyCode = key.KeyCode;
 
-                System.Diagnostics.Debug.WriteLine($"key up {keyCode} {key.Characters}");
+                System.Diagnostics.Debug.WriteLine($"MAUI key up {keyCode} {key.Characters}");
 
                 keyboardManager.InvokeKeyboardEvent(key.Characters, KeyboardManager.KeyEventType.KeyUp);
             }
